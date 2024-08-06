@@ -6,11 +6,11 @@
   width: 100%;
   z-index: 1000;
   transition: top 0.3s, background-color 0.3s;
-  background-color: transparent; 
+  background-color: transparent;
 }
 
 .navbar.hidden {
-  top: -100px; 
+  top: -100px;
 }
 
 .navbar-container {
@@ -20,12 +20,20 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
+  position: relative; /* Ensure the navbar container is the reference for the absolute positioning */
 }
 
 .navbar-logo img {
   height: 70px;
   width: 100px;
   max-width: 100%;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  transition: max-height 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
 }
 
 .navbar-links a {
@@ -53,8 +61,8 @@
 
 .book-now-btn {
   font-family: 'Roboto', sans-serif;
-  background-color: #007bff; 
-  color: #ffffff; 
+  background-color: #007bff;
+  color: #ffffff;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   text-decoration: none;
@@ -95,11 +103,15 @@
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 70px;
+    top: 100%; /* Position below the navbar */
     left: 0;
     right: 0;
-    background-color: #fcfcfc;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
     padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    animation: slideDown 0.3s ease forwards; /* Slide down animation */
+    z-index: 999; /* Ensure the menu is above other content */
   }
 
   .navbar-links.active {
@@ -108,18 +120,24 @@
 
   .navbar-links a {
     margin: 0.5rem 0;
+    color: #ffffff; /* Highlight text color */
+  }
+
+  .navbar-links a:hover {
+    color: #e74c3c; /* Highlight color on hover */
   }
 
   .book-now-btn.desktop {
-    display: none;
+    display: none; /* Hide desktop button on small screens */
   }
 
   .book-now-btn.mobile {
-    display: block;
+    display: none; /* Ensure mobile button is hidden */
   }
 
   .hamburger {
     display: block;
+    z-index: 1000; /* Ensure the hamburger is above other content */
   }
 
   .hamburger.active span:nth-child(1) {
@@ -135,12 +153,23 @@
   }
 
   .scroll-nav {
-    display: none; 
+    display: none;
+  }
+
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-10%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 }
 
 .scroll-nav {
-  display: none; 
+  display: none;
   position: fixed;
   top: 60px;
   left: 50%;
@@ -180,9 +209,8 @@
   width: 100%;
 }
 
-
 @media (min-width: 769px) {
   .scroll-nav {
-    display: block; 
+    display: block;
   }
 }
