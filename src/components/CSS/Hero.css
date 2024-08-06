@@ -1,0 +1,151 @@
+
+.hero {
+    position: relative; 
+    background-image: url('../../../public/images/ayodhya.webp'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 0 1rem;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 1; 
+}
+
+.hero-content {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    z-index: 2; 
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 5rem;
+    color: white;
+    opacity: 0;
+    animation: fadeInUp 1.5s ease-out forwards;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.hero-dynamic-name {
+    display: inline;
+    color: #ffeb3b;
+}
+
+.hero-typing {
+    display: inline;
+    color: #ff1e9a; 
+    border-right: 0.15em solid #fc179c; 
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+.typing {
+    animation: typing 3s steps(40, end) forwards;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 2s ease-out forwards;
+    animation-delay: 2s;
+}
+
+.hero-button {
+    background-color: #ff19b3; 
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeInUp 2.5s ease-out forwards;
+    animation-delay: 2.5s;
+}
+
+.hero-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-5px);
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #ff5722; 
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-button {
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.875rem;
+    }
+
+    .hero-button {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+}
